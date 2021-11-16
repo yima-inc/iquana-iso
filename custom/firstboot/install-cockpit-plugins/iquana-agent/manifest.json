@@ -1,0 +1,10 @@
+{
+    "version": 0,
+
+    "tools": {
+        "iquana": {
+            "label": "Iquana Agent",
+            "path": "index.html"
+        }
+    }
+}

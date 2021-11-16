@@ -1,0 +1,27 @@
+#cloud-config
+autoinstall:
+  version: 1
+  locale: en_US.UTF-8
+  keyboard:
+    layout: us
+  ssh:
+    allow-pw: true
+    install-server: true
+    authorized-keys:
+    - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCuqg3AR3PZz+16t36BnAJI0UjeI4N9bgj0RUGMjFxOCAWPufJ2SSQoPloI51GxE7gyIj+NcwAxTp+UMx+px8qo3/pWrG81PoYwW7U4qzcmMfj/wk44s6h6Av4vYyDhpbib/RrOKKpaUHFvnwrr5MIARMMi+oyQ6PGkg6F9IkMnCB+tdqHYJ7Kdt8JYDKCrFIy7ik4DUdLRSwnkgGYvwepH4ZUKw7so7w147rFyzo90YJadGPbFBTIEVUrPGwLp7++jBnODq0UlhFbKGFZCV56+WJIRVwjOAzWt2Y0D1QHEAVrixgNgW/bzFgsCf74/DKCQ3XD7b7agdLYRSa4AZHzR ubuntu@ubuntu
+  identity:
+    hostname: iquana
+    password: "$6$LqiXjKwvaXrso$CCphgCAJE7HfsYLg5VLFxrO2m/laoB1JPaMM9a2vlRD8nlMm14AHyBkVBA.r4YDvLFsOAUXUwG1zG15W.Frro1"
+    username: iquana
+  network:
+    version: 2
+    ethernets:
+      eth0:
+        addresses:
+        - 192.168.11.127/24
+  late-commands:
+  - cp -r /cdrom/custom/ /target/
+  - curtin in-target --target=/target -- sh /custom/provision.sh
+  - rm -rf /target/custom/
+  - shutdown -h now
+  - sleep 60

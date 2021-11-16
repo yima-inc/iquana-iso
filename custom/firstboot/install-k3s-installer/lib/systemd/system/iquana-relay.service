@@ -1,0 +1,10 @@
+[Unit]
+Description=Runs /usr/local/bin/iquana-relay.sh
+
+[Service]
+ExecStart=sh /usr/local/bin/iquana-relay.sh
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,27 @@
+#!/bin/sh
+
+set -e -x
+
+PACKAGES="@PACKAGES@"
+
+[ -d ${PWD}/apt-repo ] || exit 1
+
+echo "deb [trusted=yes] file:${PWD}/apt-repo ./" > /etc/apt/sources.list.d/local.list
+
+export DEBIAN_FRONTEND=noninteractive
+
+apt update
+apt install \
+    -y \
+    --no-install-recommends \
+    ${PACKAGES}
+apt dist-upgrade \
+    -y \
+    -o Dpkg::Options::="--force-confdef" \
+    -o Dpkg::Options::="--force-confold" \
+    --allow-downgrades \
+    --allow-remove-essential \
+    --allow-change-held-packages
+apt autoremove -y
+
+rm -f /etc/apt/sources.list.d/local.list

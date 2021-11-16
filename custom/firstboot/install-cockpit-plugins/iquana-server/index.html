@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Iquana Server</title>
+  <meta charset="utf-8">
+  <link href="../base1/cockpit.css" type="text/css" rel="stylesheet">
+  <script src="../base1/cockpit.js"></script>
+</head>
+<body>
+  <div class="pf-c-page">
+    <main class="pf-c-page__main" tabindex="-1">
+      <section class="pf-c-page__main-section pf-m-light">
+        <table class="form-table-ct">
+          <tr>
+            <td><label class="control-label" for="nodeName">Node Name</label></td>
+            <td><input class="form-control" id="nodeName" value="k3s"></td>
+          </tr>
+
+          <tr>
+            <td><label class="control-label" for="nodeExternalIp">Node External IP</label></td>
+            <td><input class="form-control" id="nodeExternalIp" value="192.168.11.127"></td>
+          </tr>
+
+          <tr>
+            <td><label class="control-label" for="bindAddress">Bind Address</label></td>
+            <td><input class="form-control" id="bindAddress" value="192.168.20.127"></td>
+          </tr>
+
+          <tr>
+            <td><button class="pf-c-button pf-m-primary" id="deployButton">Deploy</button></td>
+          </tr>
+
+          <tr>
+            <td><button class="pf-c-button pf-m-primary" id="undeployButton">Reset</button></td>
+          </tr>
+        </table>
+
+        <table class="form-table-ct">
+          <tr>
+            <td><label class="control-label" for="kubeconfig">Kubeconfig</label></td>
+            <td><pre id="kubeconfig"></pre></td>
+          </tr>
+
+          <tr>
+            <td><label class="control-label" for="token">Token</label></td>
+            <td><pre id="token"></pre></td>
+          </tr>
+
+          <tr>
+            <td><button class="pf-c-button pf-m-primary" id="reloadButton">Reload</button></td>
+          </tr>
+
+          <tr>
+            <td><button class="pf-c-button pf-m-primary" id="copyKubeconfig">Copy KubeConfig</button></td>
+            <td><label id="copyKubeconfigResult"></label></td>
+          </tr>
+
+          <tr>
+            <td><button class="pf-c-button pf-m-primary" id="copyToken">Copy Token</button></td>
+            <td><label id="copyTokenResult"></label></td>
+          </tr>
+        </table>
+      </section>
+    </main>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
